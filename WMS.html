@@ -1,0 +1,126 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Calibri, Helvetica, sans-serif;
+      background-image: url(forklift.jpg);
+      background-color: aliceblue;
+    }
+
+    button {
+      background-color: #FFD700;
+      width: 100%;
+      color: black;
+      padding: 15px;
+      margin: 10px 0px;
+      border: 2px solid black;
+      cursor: pointer;
+    }
+
+    form {
+      border: 3px solid #FFFF00;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px 20px;
+      display: inline-block;
+      border: 2px solid black;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      opacity: 0.7;
+    }
+
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      margin: 10px 5px;
+      border: 2px solid black;
+    }
+
+    .container {
+      padding: 25px;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    h1 {
+        color: yellow
+        
+    }
+
+   h3{
+    color:#FFFF00
+   }
+   
+   font{
+    color:#FFFF00
+   }
+     
+   .error-message {
+      color: red;
+      border: 1px solid red;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+  </style>
+ <script>
+   function myfunction() {
+      var passwordInput = document.getElementById('password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+    }
+
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Lakukan validasi username dan password
+      // Misalnya, periksa apakah username dan password cocok dengan data yang telah ditetapkan sebelumnya
+
+      if (username === "SPARGA" && password === "LOG123") {
+        // Jika username dan password cocok, lanjutkan dengan login
+        alert("Login sukses");
+        return true;
+      } else {
+        // Jika username atau password tidak cocok, tampilkan pesan kesalahan
+        alert("Username atau password salah. Silakan coba lagi.");
+        return false;
+      }
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="return validateForm()" method="POST" action="menu.html">
+    <div class="container">
+      <label><center><h1>WAREHOUSE MANAGEMENT SYSTEM LOGIN</h1></center></label>
+    </div>
+    <div class="container">
+      <label><h3>Username:</h3></label>
+      <input type="text" placeholder="Enter Username" id="username" name="username" required>
+      <label><h3>Password:</h3></label>
+      <input type="password" placeholder="Enter Password" id="password" name="password" required>
+      <input type="checkbox" onclick="myfunction()">
+      <label><font size="3">Show Password</font></label>
+      <br><br>
+      <button type="submit">LOGIN</button>
+      <input type="checkbox" checked="checked"> <font size="3">Remember me</font>
+      <button type="button" class="cancelbtn">Cancel</button>
+      Forgot <a href="#">password?</a>
+      <div id="error-message" style="color: red;"></div> <!-- Error message container -->
+    </div>
+  </form>
+  <footer>
+    <p>&copy; 2023 Warehouse Management System</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<html lang="en">
+<head>
+    <script src="script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Navigation Bar</title>
+  <style>
+    @media only screen and (max-width: 768px) {
+      /* Style untuk tampilan mobile */
+      #nav-bar {
+        display: none;
+      }
+      #ham-menu {
+        display: block;
+      }
+      #ham-menu.close {
+        display: none;
+      }
+      #nav-bar.open {
+        display: block;
+      }
+    }
+
+    /* CSS untuk menu samping */
+    #side-menu {
+      width: 250px;
+      background-color: #f1f1f1;
+      position: fixed;
+      height: 100%;
+      left: -250px;
+      transition: left 0.3s ease-in;
+    }
+
+    #side-menu.open {
+      left: 0;
+    }
+
+    #side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #side-menu li {
+      padding: 10px;
+    }
+
+    /* Styles lainnya */
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #home {
+      padding-top: 100px; /* Mengatur jarak antara header dan judul */
+      min-height: 100vh; /* Memastikan elemen section memiliki setidaknya tinggi 100% viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #home h1 {
+      max-width: 80%; /* Mengatur lebar maksimum judul */
+      margin-bottom: 20px; /* Mengatur jarak antara judul dan formulir */
+    }
+
+    @media only screen and (max-width: 768px) {
+      /* Style untuk tampilan mobile */
+      #home {
+        padding-top: 50px; /* Mengatur jarak antara header dan judul */
+      }
+    }
+     /* Gaya CSS untuk menu samping */
+     .sidenav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #FFFF00;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+    
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+    
+    /* Gaya CSS untuk hamburger icon */
+    .hamburger {
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+  position: absolute;
+  left: 5px; /* Adjust the left position as needed */
+  top: 40%;
+  transform: translateY(-50%);
+    }
+    
+    .hamburger span {
+      background-color: #111;
+      display: block;
+      height: 5px;
+      position: absolute;
+      width: 42px;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .hamburger span:nth-child(1) {
+      top: 0px;
+      width: 42px;
+    }
+    
+    .hamburger span:nth-child(2),
+    .hamburger span:nth-child(3) {
+      top: 13px;
+    }
+    
+    .hamburger span:nth-child(4) {
+      top: 26px;
+      width: 42px;
+    }
+    
+     /* Mengubah tampilan saat menu samping terbuka */
+     .change .hamburger span:nth-child(1),
+    .change .hamburger span:nth-child(4) {
+      width: 0;
+    }
+    
+    .change .hamburger span:nth-child(2) {
+      transform: rotate(45deg);
+      width: 100%;
+    }
+    
+    .change .hamburger span:nth-child(3) {
+      transform: rotate(-45deg);
+      width: 100%;
+    }
+    
+    /* Gaya CSS untuk logo */
+    #logo {
+      display: inline-block;
+      margin-left: 45px;
+      font-weight: bold;
+    }
+    #mySidenav {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+#logout {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+}
+
+
+#logout img {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+}
+#logout a {
+  display: inline-block;
+}
+
+#logout img {
+  cursor: pointer;
+}
+#team {
+  text-align: center;
+  padding: 100px 0;
+}
+
+#team h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.team-member {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 20px;
+}
+
+.team-member img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.team-member h3 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.team-member p {
+  font-size: 18px;
+  color: #888;
+}
+footer {
+  background-image: url('BG02.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+  position: relative;
+  z-index: 2;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  opacity: 1; /* Tambahkan properti opacity dengan nilai 1 untuk membuat tulisan tidak transparan */
+  color: white;
+  font-size: 14px;
+}
+
+.footer-right {
+  text-align: right;
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  opacity: 1;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: white;
+}
+  </style>
+  <!-- Font Awesome Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+        <div id="mySidenav" class="sidenav">
+          <img src="pinterest_profile_image.png" alt="Foto" id="profile-picture" style="width: 200px; height: auto; margin: 10px 0;">
+            <a href="DaftarBarang.html">Daftar Barang</a>
+            <a href="BarangMasuk.html">Barang Masuk</a>
+            <a href="BarangKeluar.html">Barang Keluar</a>
+            <div id="logout">
+                <a href="WMS.html"></a>
+                <img src="logout.png" alt="Logout" onclick="logout()">
+              </div>
+          </div>
+          
+          <div class="hamburger" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <a href="#home" id="logo">SPARGA WMS</a>
+          </div>
+        
+      <a href="#home" id="logo"></a>
+      <i class="fas fa-bars" id="ham-menu"></i>
+      <ul id="nav-bar">
+        <li>
+          <a href="menu.html">Home</a>
+        </li>
+        <li>
+          <a href="AboutUs.html">About</a>
+        </li>
+        <li>
+          <a href="Gallery.html">Gallery</a>
+        </li>
+        <li>
+          <a href="Team.html">Team</a>
+        </li>
+        <li>
+          <a href="Contact.html">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section id="team">
+    <h2>Our Team</h2>
+    <div class="team-member">
+      <img src="Gyo.JPG" alt="Team Member">
+      <h3>Gyo Makaleo</h3>
+      <p>Software Consultant</p>
+      <a href="https://www.instagram.com/kstistian/">@kstistian</a>
+    </div>
+    <div class="team-member">
+      <img src="Pera.JPG" alt="Team Member">
+      <h3>Perawati Simbolon</h3>
+      <p>Design</p>
+      <a href="https://www.instagram.com/praawtyy17_/">@praawtyy17_</a>
+    </div>
+    <div class="team-member">
+      <img src="Ridha.JPG" alt="Team Member">
+      <h3>Ridha Ananda</h3>
+      <p>Web Developer</p>
+      <a href="https://www.instagram.com/rdh_a.re/">@rdh_a.re</a>
+    </div>
+    <div class="team-member">
+        <img src="Syafitry.JPG" alt="Team Member">
+        <h3>Syafitry Attia</h3>
+        <p>Software Testing</p>
+        <a href="https://www.instagram.com/syafit.ar/">@syafit.ar</a>
+      </div>
+      <div class="team-member">
+        <img src="Andre.JPG" alt="Team Member">
+        <h3>Andre Tio</h3>
+        <p>Technical Lead</p>
+        <a href="https://www.instagram.com/andre___________19/">@andre___________19</a>
+      </div>
+  </section>
+  <!-- JavaScript -->
+<script>
+    document.getElementById("ham-menu").addEventListener("click", function() {
+      var navBar = document.getElementById("nav-bar");
+      this.classList.toggle("close");
+      navBar.classList.toggle("open");
+    });
+  </script>
+  <script>
+    function toggleNav() {
+      var sidenav = document.getElementById("mySidenav");
+      var hamburger = document.getElementsByClassName("hamburger")[0];
+      sidenav.classList.toggle('change');
+      if (sidenav.style.width === "250px") {
+        sidenav.style.width = "0";
+        hamburger.style.marginLeft = "10px";
+      } else {
+        sidenav.style.width = "250px";
+        hamburger.style.marginLeft = "260px";
+      }
+    }
+  </script>
+  <script>
+    function logout() {
+  window.location.href = "WMS.html";
+    }
+  </script>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>Tentang Kami</h3>
+        <p>Sparga WMS adalah penyedia solusi terdepan dalam manajemen gudang. Kami menyediakan sistem yang terintegrasi dan inovatif untuk membantu perusahaan mengoptimalkan operasi gudang mereka.</p>
+      </div>
+      <div class="footer-right">
+        <h3>Kontak</h3>
+        <p>Alamat: Jl. Pramuka, Tanjung Ayun Sakti, Bukit Bestari, Tanjung Pinang City, Kepulauan Riau, Indonesia</p>
+        <p>Email: Spargawms@gmail.com</p>
+        <p>Telepon: +123456789</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Hak Cipta &copy; 2023 SPARGA WMS. Semua Hak Dilindungi.</p>
+    </div>
+  </footer>
+</body>
+</html>
